@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Alert,
   Modal,
   SafeAreaView,
   StatusBar,
@@ -47,7 +46,7 @@ export default function BMIModel({
             </Text>
           </View>
 
-          <Text style={styles.centerContentText}>Infinity</Text>
+          <Text style={styles.centerContentText}>{bmi}</Text>
 
           <View style={styles.bottomContentView}>
             <View style={styles.bottomTopContentView}>

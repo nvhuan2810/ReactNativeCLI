@@ -36,8 +36,8 @@ export default function BodyBMI({
         <Slider
           style={styles.slider}
           value={height}
-          minimumValue={0}
-          maximumValue={500}
+          minimumValue={1}
+          maximumValue={250}
           minimumTrackTintColor="#844b69"
           maximumTrackTintColor="#ffffff"
           onValueChange={(val) => changeHeight(val)}

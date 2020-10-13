@@ -7,26 +7,13 @@
  */
 
 import React from 'react';
-import {SafeAreaView, StyleSheet, StatusBar} from 'react-native';
 
 import {BMICalculator} from './components/bmi/BMICalculator';
+import RockPaperScissor from './components/scissor/RockPaperScissor';
 
 const App = () => {
-  return (
-    <>
-      <StatusBar barStyle="light-content" />
-      <SafeAreaView style={styles.container}>
-        <BMICalculator />
-      </SafeAreaView>
-    </>
-  );
+  //return (<BMICalculator />);
+  return (<RockPaperScissor />);
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#1a2633',
-  },
-});
 
 export default App;

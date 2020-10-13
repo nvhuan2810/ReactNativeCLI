@@ -4,7 +4,7 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 export default function OtherView({title, value = 60, setValue}) {
 
   function subChangeValue() {
-    setValue(value > 0 ? --value : 0);
+    setValue(value > 1 ? --value : 1);
   }
 
   function addChangeValue() {

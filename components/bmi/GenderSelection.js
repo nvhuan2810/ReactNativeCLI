@@ -16,7 +16,7 @@ export default function GenderSelection({type, gender, setGender}) {
       <TouchableOpacity
         style={[
           styles.subGenderView,
-          {backgroundColor: gender === type ? '#333244' : '#21263b'},
+          {backgroundColor: gender === type ? '#21263b' : '#333244'},
         ]}
         onPress={onGenderChanged}>
 
