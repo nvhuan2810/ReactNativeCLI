@@ -31,9 +31,13 @@ export function BMICalculator() {
       <SafeAreaView style={styles.container}>
         <BMIModel
           gender={gender}
+          setGender={setGender}
           height={height}
+          setHeight={setHeight}
           weight={weight}
+          setWeight={setWeight}
           age={age}
+          setAge={setAge}
           modalVisible={modalVisible}
           setModalVisible={setModalVisible}
         />

@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-export default function OtherView({title, value = 60, setValue}) {
+export default function OtherView({title, value, setValue, maxValue, minValue}) {
+
+  const [intervalId, setIntervalId] = useState(0);
 
   function subChangeValue() {
-    setValue(value > 1 ? --value : 1);
+    setValue(value > (minValue || 1) ? --value : 1);
   }
 
   function addChangeValue() {
-    setValue(value < 1000 ? ++value : value);
+    setValue(value < (maxValue || 300) ? ++value : value);
+  }
+
+  function subLongClick() {
+    let id = setInterval( () => { 
+      subChangeValue();
+   }, 100);
+   setIntervalId(id);
+  }
+
+  function addLongClick() {
+    let id = setInterval( () => { 
+      addChangeValue();
+   }, 100);
+   setIntervalId(id);
+  }
+
+  function finishInterval() {
+    clearInterval(intervalId);
   }
 
   return (
@@ -18,11 +38,11 @@ export default function OtherView({title, value = 60, setValue}) {
       <Text style={styles.boldText}>{value}</Text>
 
       <View style={styles.addOrSubParentView}>
-        <TouchableOpacity style={styles.addOrSubTouch} onPress={subChangeValue}>
+        <TouchableOpacity style={styles.addOrSubTouch} onPress={subChangeValue} onLongPress={subLongClick} onPressOut={finishInterval}>
           <Text style={styles.addOrSubText}>-</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.addOrSubTouch} onPress={addChangeValue}>
+        <TouchableOpacity style={styles.addOrSubTouch} onPress={addChangeValue} onLongPress={addLongClick} onPressOut={finishInterval}>
           <Text style={styles.addOrSubText}>+</Text>
         </TouchableOpacity>
       </View>

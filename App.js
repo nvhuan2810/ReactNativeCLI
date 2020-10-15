@@ -9,11 +9,9 @@
 import React from 'react';
 
 import {BMICalculator} from './components/bmi/BMICalculator';
-import RockPaperScissor from './components/scissor/RockPaperScissor';
 
 const App = () => {
-  //return (<BMICalculator />);
-  return (<RockPaperScissor />);
+  return (<BMICalculator />);
 };
 
 export default App;

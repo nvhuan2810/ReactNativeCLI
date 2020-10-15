@@ -10,18 +10,27 @@ import {
 import ButtonCommon from './ButtonCommon';
 import Foundation from 'react-native-vector-icons/Foundation';
 import {MALE} from './GenderSelection';
+import { AGE_DEFAULT, GENDER_DEFAULT, HEIGHT_DEFAULT, WEIGHT_DEFAULT } from './BMICalculator';
 
 export default function BMIModel({
   gender,
+  setGender,
   height,
+  setHeight,
   weight,
+  setWeight,
   age,
+  setAge,
   modalVisible,
   setModalVisible,
 }) {
   const bmi = weight / Math.pow(height / 100.0, 2);
 
   function closeModel() {
+    setGender(GENDER_DEFAULT);
+    setHeight(HEIGHT_DEFAULT);
+    setWeight(WEIGHT_DEFAULT);
+    setAge(AGE_DEFAULT);
     setModalVisible(!modalVisible);
   }
 
@@ -46,7 +55,7 @@ export default function BMIModel({
             </Text>
           </View>
 
-          <Text style={styles.centerContentText}>{bmi}</Text>
+          <Text style={styles.centerContentText}>{bmi.toFixed(2)}</Text>
 
           <View style={styles.bottomContentView}>
             <View style={styles.bottomTopContentView}>
@@ -60,10 +69,10 @@ export default function BMIModel({
             </View>
             <Text style={styles.commentText}>
               {bmi < 18.5
-                ? 'You are underweighted. Eat more!'
+                ? 'You are underweighted.\nEat more!'
                 : bmi >= 25
-                ? 'You are overweighted. Eat less!'
-                : 'You are normal. Verry good!'}
+                ? 'You are overweighted.\nEat less!'
+                : 'You have a normal body weight.\nGood job!'}
             </Text>
           </View>
         </View>
@@ -146,7 +155,7 @@ const styles = StyleSheet.create({
     marginStart: 20,
     marginEnd: 20,
     color: '#fff',
-    fontSize: 25,
+    fontSize: 23,
     fontWeight: 'bold',
     textAlign: 'center',
   },

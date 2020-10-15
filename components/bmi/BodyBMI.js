@@ -3,15 +3,16 @@ import {StyleSheet, Text, View} from 'react-native';
 import Slider from '@react-native-community/slider';
 import GenderSelection, { FEMALE, MALE } from './GenderSelection';
 import OtherView from './OtherView';
+import { AGE_DEFAULT, GENDER_DEFAULT, HEIGHT_DEFAULT, WEIGHT_DEFAULT } from './BMICalculator';
 
 export default function BodyBMI({
-  gender = MALE,
+  gender = GENDER_DEFAULT,
   setGender,
-  height = 150,
+  height = HEIGHT_DEFAULT,
   setHeight,
-  weight = 60,
+  weight = WEIGHT_DEFAULT,
   setWeight,
-  age = 20,
+  age = AGE_DEFAULT,
   setAge,
 }) {
 
@@ -36,7 +37,7 @@ export default function BodyBMI({
         <Slider
           style={styles.slider}
           value={height}
-          minimumValue={1}
+          minimumValue={40}
           maximumValue={250}
           minimumTrackTintColor="#844b69"
           maximumTrackTintColor="#ffffff"
@@ -44,8 +45,8 @@ export default function BodyBMI({
         />
       </View>
       <View style={styles.otherView}>
-        <OtherView title="WEIGHT" value={weight} setValue={setWeight} />
-        <OtherView title="AGE" value={age} setValue={setAge} />
+        <OtherView title="WEIGHT" value={weight} setValue={setWeight} maxValue={300} />
+        <OtherView title="AGE" value={age} setValue={setAge} maxValue={120} />
       </View>
     </>
   );

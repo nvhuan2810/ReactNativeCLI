@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 
-export default function ButtonCommon({title, onClick}) {
+export default function ButtonCommon({title, onClick, onLongClick}) {
   return (
-    <TouchableOpacity style={styles.calculatorTouch} onPress={onClick}>
+    <TouchableOpacity style={styles.calculatorTouch} onPress={onClick} onLongPress={onLongClick}>
       <Text style={styles.calculatorText}>{title}</Text>
     </TouchableOpacity>
   );
