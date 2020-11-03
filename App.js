@@ -7,11 +7,12 @@
  */
 
 import React from 'react';
-
+import ListNews from './components/api/ListNews';
 import {BMICalculator} from './components/bmi/BMICalculator';
 
 const App = () => {
-  return (<BMICalculator />);
+  //return (<BMICalculator />);
+  return (<ListNews />);
 };
 
 export default App;

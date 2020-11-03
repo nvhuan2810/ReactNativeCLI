@@ -13,22 +13,14 @@ export default function OtherView({title, value, setValue, maxValue, minValue}) 
     setValue(value < (maxValue || 300) ? ++value : value);
   }
 
-  function subLongClick() {
-    let id = setInterval( () => { 
-      subChangeValue();
-   }, 100);
-   setIntervalId(id);
-  }
-
-  function addLongClick() {
-    let id = setInterval( () => { 
-      addChangeValue();
-   }, 100);
-   setIntervalId(id);
+  function onLongClick(isAdd) {
+    let id = setInterval(isAdd ? addChangeValue : subChangeValue, 100);;
+    setIntervalId(id);
   }
 
   function finishInterval() {
     clearInterval(intervalId);
+    setIntervalId(null);
   }
 
   return (
@@ -38,11 +30,18 @@ export default function OtherView({title, value, setValue, maxValue, minValue}) 
       <Text style={styles.boldText}>{value}</Text>
 
       <View style={styles.addOrSubParentView}>
-        <TouchableOpacity style={styles.addOrSubTouch} onPress={subChangeValue} onLongPress={subLongClick} onPressOut={finishInterval}>
+        <TouchableOpacity 
+          style={styles.addOrSubTouch} 
+          onPress={subChangeValue} 
+          onLongPress={() => onLongClick(false)} 
+          onPressOut={finishInterval}>
           <Text style={styles.addOrSubText}>-</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.addOrSubTouch} onPress={addChangeValue} onLongPress={addLongClick} onPressOut={finishInterval}>
+        <TouchableOpacity style={styles.addOrSubTouch} 
+          onPress={addChangeValue} 
+          onLongPress={() => onLongClick(true)} 
+          onPressOut={finishInterval}>
           <Text style={styles.addOrSubText}>+</Text>
         </TouchableOpacity>
       </View>

@@ -9,8 +9,11 @@ import {
 } from 'react-native';
 import ButtonCommon from './ButtonCommon';
 import Foundation from 'react-native-vector-icons/Foundation';
-import {MALE} from './GenderSelection';
+import {FEMALE_COLOR, MALE, MALE_COLOR, MALE_IMAGE, FEMALE_IMAGE} from './GenderSelection';
 import { AGE_DEFAULT, GENDER_DEFAULT, HEIGHT_DEFAULT, WEIGHT_DEFAULT } from './BMICalculator';
+
+const WARNING_COLOR = '#fb413a';
+const NORMAL_COLOR = '#00FF00';
 
 export default function BMIModel({
   gender,
@@ -45,12 +48,12 @@ export default function BMIModel({
             <View style={styles.genderTopContentView}>
               <Text style={styles.genderText}>Gender: </Text>
               <Foundation
-                name={gender === MALE ? 'male-symbol' : 'female-symbol'}
+                name={gender === MALE ? MALE_IMAGE : FEMALE_IMAGE}
                 size={20}
-                color={gender === MALE ? '#02d1db' : '#fb413a'}
+                color={gender === MALE ? MALE_COLOR : FEMALE_COLOR}
               />
             </View>
-            <Text style={styles.concludeText}>
+            <Text style={[styles.concludeText, {color: (bmi < 18.5 || bmi >= 25) ? WARNING_COLOR : NORMAL_COLOR}]}>
               {bmi < 18.5 ? 'UNDERWEIGHT' : bmi >= 25 ? 'OVERWEIGHT' : 'NORMAL'}
             </Text>
           </View>

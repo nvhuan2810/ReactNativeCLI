@@ -5,6 +5,12 @@ import Foundation from 'react-native-vector-icons/Foundation';
 export const MALE = 1;
 export const FEMALE = 0;
 
+export const MALE_COLOR = '#02d1db';
+export const FEMALE_COLOR = '#fb413a';
+
+export const MALE_IMAGE = 'male-symbol';
+export const FEMALE_IMAGE = 'female-symbol';
+
 export default function GenderSelection({type, gender, setGender}) {
 
   function onGenderChanged() {
@@ -21,9 +27,9 @@ export default function GenderSelection({type, gender, setGender}) {
         onPress={onGenderChanged}>
 
         <Foundation
-          name={type === MALE ? 'male-symbol' : 'female-symbol'}
+          name={type === MALE ? MALE_IMAGE : FEMALE_IMAGE}
           size={65}
-          color={type === MALE ? '#02d1db' : '#fb413a'}
+          color={type === MALE ? MALE_COLOR : FEMALE_COLOR}
         />
         <Text style={styles.commonText}>{type === MALE ? "MALE" : "FEMALE"}</Text>
       </TouchableOpacity>
